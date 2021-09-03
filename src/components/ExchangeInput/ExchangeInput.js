@@ -1,6 +1,7 @@
 import React from "react";
-import CurrencySelector from "./CurrencySelector";
+import CurrencySelector from "../CurrencySelector/CurrencySelector";
 import { Input } from 'antd';
+import './ExchangeInput.css'
 
 class ExchangeInput extends React.Component {
   constructor(props) {
@@ -21,18 +22,17 @@ class ExchangeInput extends React.Component {
     const money = this.props.money;
 
     return (
-      <fieldset style={{margin: !this.props.right ? '30px 10px 0 15px' : '30px 15px 0 10px'}}>
+      <fieldset className={!this.props.right ? 'fieldset-left' : 'fieldset-right'}>
         <CurrencySelector
           right={this.props.right}
           currency={this.props.currency}
           onCurrencyChange={this.selectCurrency}/>
-        <legend style={{fontSize: '14px'}}>{ !this.props.right ? 'Ունեմ' : 'Ցանկանում եմ' }</legend>
+        <legend className='legend-item'>{ !this.props.right ? 'Ունեմ' : 'Ցանկանում եմ' }</legend>
         <Input
-          style={{maxWidth: '135px'}}
           placeholder={'0.00'}
           value={money}
           type={'number'}
-          className={this.props.right ? 'marginLeft' : ''}
+          className={this.props.right ? 'marginLeft input-item' : 'input-item'}
           onChange={this.handleChange}/>
       </fieldset>
     );

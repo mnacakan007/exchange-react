@@ -1,5 +1,5 @@
 import React from 'react'
-import {Exchange} from "./components/Exchange";
+import {Exchange} from "./components/main/Exchange";
 import './App.css';
 
 function App() {

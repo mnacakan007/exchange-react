@@ -1,0 +1,18 @@
+.fieldset-left {
+	margin: 30px 10px 0 15px;
+}
+
+.fieldset-right {
+	margin: 30px 15px 0 10px;
+}
+
+.legend-item {
+	font-size: 14px;
+	color: white;
+}
+
+.input-item {
+	max-width: 36vw;
+	height: 40px;
+	border-radius: 4px !important;
+}
