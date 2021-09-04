@@ -11,8 +11,12 @@
 	color: white;
 }
 
-.input-item {
-	max-width: 36vw;
+.ant-input-number.input-item {
+	width: 36vw;
 	height: 40px;
 	border-radius: 4px !important;
+}
+
+.ant-input-number-input {
+	height: 38px!important;
 }

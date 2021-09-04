@@ -1,18 +1,16 @@
 .flag {
 	border-radius: 50%;
 	margin-right: 25px;
-	margin-bottom: 20px;
 }
 
-.country-name-item {
+.country-name-item,
+.currency-course-list {
 	font-weight: bold;
 	color: white;
+	margin-bottom: 20px;
 	font-size: 18px;
 }
 
 .currency-course-list {
 	font-weight: 500;
-	color: white;
-	padding-bottom: 20px;
-	font-size: 18px;
 }

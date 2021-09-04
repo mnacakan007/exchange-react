@@ -5,7 +5,7 @@ import Loader from '../../Loader'
 import CourseTable from "../CoursesTable/CoursesTable";
 import './Exchange.css'
 
-const API = 'http://apilayer.net/api/live?access_key=2b1b329fd66a5a8e48d84dd8d0d03fba&currencies=EUR,GBP,RUB,AMD,USD&source=USD&format=1';
+const URL = process.env.REACT_APP_DB_URL;
 
 function toMoney(money = 0, course) {
   if (!money) {
@@ -48,7 +48,7 @@ export class Exchange extends React.Component {
 
   getCurrency() {
     return new Promise((resolve) => setTimeout(() =>
-        fetch(API)
+        fetch(URL)
           .then(response => response.json())
           .then(currency => {
             this.setState({ currency: currency.quotes });

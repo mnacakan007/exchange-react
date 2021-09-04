@@ -7,6 +7,9 @@ import './CoursesTable.css';
 
 const currencyList = [
   {
+    flagUrl: usaFlag, name: 'USD'
+  },
+  {
     flagUrl: europeFlag, name: 'EUR'
   },
   {
@@ -14,9 +17,6 @@ const currencyList = [
   },
   {
     flagUrl: russiaFlag, name: 'RUB'
-  },
-  {
-    flagUrl: usaFlag, name: 'USD'
   },
 ]
 
@@ -30,14 +30,33 @@ class CourseTable extends React.Component {
   calcCourse(value) {
     const course = this.props.currency['USDAMD'];
 
-    if (!value) {
+    if (!value || value === 1) {
       return 0
+    }
+
+    if (course === value) {
+      return Math.round(course * 100) / 100
     }
 
     return Math.round(course / value * 100) / 100
   }
 
+  compare(a, b) {
+    if (a[0] === 'USDAMD') return -1
+
+    return a - b
+  }
+
   render() {
+    let currencyObj = this.props?.currency;
+
+    let currency = Object.entries(currencyObj);
+
+    const output = currency.sort(this.compare).reduce((accum, [k, v]) => {
+      accum[k] = v;
+      return accum;
+    }, {});
+
     return (
         <div className='currency-list'>
           <div className='currency-list-names'>
@@ -57,11 +76,11 @@ class CourseTable extends React.Component {
             })}
           </div>
           <div className='currency-list-values'>
-            {Object.values(this.props.currency)
+            {Object.values(output)
               .map(this.calcCourse)
-              .filter(value => value !== 1)
+              .filter(value => value !== 0)
               .map(value => {
-              return <div className='currency-course-list' key={value}>{value !== 1 ? value : null}</div>
+              return <div className='currency-course-list' key={value}>{value}</div>
             })}
           </div>
         </div>
