@@ -1,6 +1,6 @@
 import React from "react";
 import CurrencySelector from "../CurrencySelector/CurrencySelector";
-import { Input } from 'antd';
+import {InputNumber} from 'antd';
 import './ExchangeInput.css'
 
 class ExchangeInput extends React.Component {
@@ -10,8 +10,13 @@ class ExchangeInput extends React.Component {
     this.selectCurrency = this.selectCurrency.bind(this);
   }
 
-  handleChange(e) {
-    this.props.onExchangeMoney(e.target.value);
+  handleChange(value) {
+
+    if (value < 0) {
+      return
+    }
+
+    this.props.onExchangeMoney(value);
   }
 
   selectCurrency(quote) {
@@ -28,11 +33,12 @@ class ExchangeInput extends React.Component {
           currency={this.props.currency}
           onCurrencyChange={this.selectCurrency}/>
         <legend className='legend-item'>{ !this.props.right ? 'Ունեմ' : 'Ցանկանում եմ' }</legend>
-        <Input
+        <InputNumber
+          maxLength={15}
           placeholder={'0.00'}
           value={money}
-          type={'number'}
-          className='input-item'
+          min="0"
+          className={this.props.right ? 'marginLeft input-item' : 'input-item'}
           onChange={this.handleChange}/>
       </fieldset>
     );
