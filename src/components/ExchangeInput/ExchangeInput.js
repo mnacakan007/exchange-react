@@ -38,7 +38,7 @@ class ExchangeInput extends React.Component {
           placeholder={'0.00'}
           value={money}
           min="0"
-          className={this.props.right ? 'marginLeft input-item' : 'input-item'}
+          className='input-item'
           onChange={this.handleChange}/>
       </fieldset>
     );
