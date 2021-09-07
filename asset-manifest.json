@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/exchange-react/static/css/main.e480d1b9.chunk.css",
+    "main.css": "/exchange-react/static/css/main.5b34175e.chunk.css",
     "main.js": "/exchange-react/static/js/main.724d3b38.chunk.js",
     "main.js.map": "/exchange-react/static/js/main.724d3b38.chunk.js.map",
     "runtime-main.js": "/exchange-react/static/js/runtime-main.9646d880.js",
@@ -10,7 +10,7 @@
     "static/js/2.e5d33d30.chunk.js.map": "/exchange-react/static/js/2.e5d33d30.chunk.js.map",
     "index.html": "/exchange-react/index.html",
     "static/css/2.786ae0dd.chunk.css.map": "/exchange-react/static/css/2.786ae0dd.chunk.css.map",
-    "static/css/main.e480d1b9.chunk.css.map": "/exchange-react/static/css/main.e480d1b9.chunk.css.map",
+    "static/css/main.5b34175e.chunk.css.map": "/exchange-react/static/css/main.5b34175e.chunk.css.map",
     "static/js/2.e5d33d30.chunk.js.LICENSE.txt": "/exchange-react/static/js/2.e5d33d30.chunk.js.LICENSE.txt",
     "static/media/english-flag.d867177b.png": "/exchange-react/static/media/english-flag.d867177b.png",
     "static/media/european-flag.b16f8446.png": "/exchange-react/static/media/european-flag.b16f8446.png",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.9646d880.js",
     "static/css/2.786ae0dd.chunk.css",
     "static/js/2.e5d33d30.chunk.js",
-    "static/css/main.e480d1b9.chunk.css",
+    "static/css/main.5b34175e.chunk.css",
     "static/js/main.724d3b38.chunk.js"
   ]
 }
