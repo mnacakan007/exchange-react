@@ -2,19 +2,12 @@ import React from "react";
 import { Select } from "antd";
 
 class CurrencySelector extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.sliceValue = this.sliceValue.bind(this);
-  }
-
-  handleChange(quote) {
+  handleChange = quote => {
     this.props.onCurrencyChange(quote);
     this.setState({quote})
   }
 
-  sliceValue(value) {
+  sliceValue = value => {
     return value.slice(3)
   }
 

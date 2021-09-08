@@ -1,33 +1,9 @@
 import React from "react";
-import usaFlag from '../../assets/usa-flag.png';
-import russiaFlag from '../../assets/russian-flag.png';
-import europeFlag from '../../assets/european-flag.png';
-import englishFlag from '../../assets/english-flag.png';
 import './CoursesTable.css';
-
-const currencyList = [
-  {
-    flagUrl: usaFlag, name: 'USD'
-  },
-  {
-    flagUrl: europeFlag, name: 'EUR'
-  },
-  {
-    flagUrl: englishFlag, name: 'GBP'
-  },
-  {
-    flagUrl: russiaFlag, name: 'RUB'
-  },
-]
+import { exchangeConfigs } from "../../assets/configs/exchangeConfigs";
 
 class CourseTable extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.calcCourse = this.calcCourse.bind(this)
-  }
-
-  calcCourse(value) {
+  calcCourse = value => {
     const course = this.props.currency['USDAMD'];
 
     if (!value || value === 1) {
@@ -41,26 +17,24 @@ class CourseTable extends React.Component {
     return Math.round(course / value * 100) / 100
   }
 
-  compare(a, b) {
+  compare = (a, b) => {
     if (a[0] === 'USDAMD') return -1
 
     return a - b
   }
 
-  render() {
-    let currencyObj = this.props?.currency;
-
-    let currency = Object.entries(currencyObj);
-
-    const output = currency.sort(this.compare).reduce((accum, [k, v]) => {
-      accum[k] = v;
-      return accum;
+  sortCurrency = () => {
+    return Object.entries(this.props?.currency).sort(this.compare).reduce((acc, [k, v]) => {
+      acc[k] = v;
+      return acc;
     }, {});
+  }
 
+  render() {
     return (
         <div className='currency-list'>
           <div className='currency-list-names'>
-            {currencyList.map(country => {
+            {exchangeConfigs.map(country => {
               return <div style={{display: 'flex'}} key={country.name}>
                 <div>
                   <img
@@ -76,7 +50,7 @@ class CourseTable extends React.Component {
             })}
           </div>
           <div className='currency-list-values'>
-            {Object.values(output)
+            {Object.values(this.sortCurrency())
               .map(this.calcCourse)
               .filter(value => !!value)
               .map(value => {

@@ -4,14 +4,7 @@ import {InputNumber} from 'antd';
 import './ExchangeInput.css'
 
 class ExchangeInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.selectCurrency = this.selectCurrency.bind(this);
-  }
-
-  handleChange(value) {
-
+  handleChange = value => {
     if (value < 0) {
       return
     }
@@ -19,7 +12,7 @@ class ExchangeInput extends React.Component {
     this.props.onExchangeMoney(value);
   }
 
-  selectCurrency(quote) {
+  selectCurrency = quote => {
     this.props.onCurrencyChange(quote);
   }
 
@@ -34,11 +27,12 @@ class ExchangeInput extends React.Component {
           onCurrencyChange={this.selectCurrency}/>
         <legend className='legend-item'>{ !this.props.right ? 'Ունեմ' : 'Ցանկանում եմ' }</legend>
         <InputNumber
-          maxLength={15}
+          maxLength="15"
           placeholder={'0.00'}
           value={money}
           min="0"
           className='input-item'
+          type="number"
           onChange={this.handleChange}/>
       </fieldset>
     );

@@ -4,9 +4,10 @@ import ExchangeInput from "../ExchangeInput/ExchangeInput";
 import Loader from '../../Loader'
 import CourseTable from "../CoursesTable/CoursesTable";
 import './Exchange.css'
+import { currency } from "../../assets/configs/exchangeConfigs";
 
 
-const URL = process.env.REACT_APP_DB_URL;
+// const URL = process.env.REACT_APP_DB_URL;
 
 function toMoney(money = 0, course) {
   if (!money) {
@@ -22,12 +23,6 @@ function calcCourse(course1, course2) {
 export class Exchange extends React.Component {
   constructor(props) {
     super(props);
-
-    this.handleLeftSelector = this.handleLeftSelector.bind(this);
-    this.handleRightSelector = this.handleRightSelector.bind(this);
-    this.handleLeftInput = this.handleLeftInput.bind(this);
-    this.handleRightInput = this.handleRightInput.bind(this);
-    this.getCurrency = this.getCurrency.bind(this);
 
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     const today  = new Date();
@@ -48,14 +43,7 @@ export class Exchange extends React.Component {
   }
 
   getCurrency() {
-    const quotes = {
-      USDAMD: 493.649897,
-      USDEUR: 0.841999,
-      USDGBP: 0.722715,
-      USDRUB: 72.758599,
-      USDUSD: 1
-    }
-
+    // Todo Not working https requests for this API, find other API
     // return new Promise((resolve) => setTimeout(() =>
     //     fetch(URL)
     //       .then(response => response.json())
@@ -66,27 +54,27 @@ export class Exchange extends React.Component {
     //   1000)
     // );
 
-    return new Promise((resolve) => setTimeout(() => {
-        this.setState({ currency: quotes });
+    return new Promise(resolve => setTimeout(() => {
+        this.setState({ currency });
         resolve();
       }, 1000)
     );
   }
 
-  handleLeftSelector(leftQuote) {
+  handleLeftSelector = leftQuote => {
     this.setState({ leftQuote });
   }
 
-  handleRightSelector(rightQuote) {
+  handleRightSelector = rightQuote => {
     this.setState({ rightQuote });
   }
 
-  handleLeftInput(leftInput) {
+  handleLeftInput = leftInput => {
     this.setState({ rightInput: 0 });
     this.setState({ leftInput });
   }
 
-  handleRightInput(rightInput) {
+  handleRightInput = rightInput => {
     this.setState({ leftInput: 0 });
     this.setState({ rightInput });
   }
@@ -98,7 +86,7 @@ export class Exchange extends React.Component {
       return <Loader/>;
     }
 
-    const {leftQuote, rightQuote, leftInput, rightInput, courseCurrentDate } = this.state
+    const { leftQuote, rightQuote, leftInput, rightInput, courseCurrentDate } = this.state
 
     const leftInputCourse = this.state.currency['USD' + leftQuote];
     const rightInputCourse = this.state.currency['USD' + rightQuote];
