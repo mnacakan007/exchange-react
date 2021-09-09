@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CurrencySelector from "../CurrencySelector/CurrencySelector";
 import {InputNumber} from 'antd';
-import './ExchangeInput.css'
+import classes from './ExchangeInput.module.scss'
 
 class ExchangeInput extends Component {
   handleChange = value => {
@@ -20,7 +20,7 @@ class ExchangeInput extends Component {
     const money = this.props.money;
 
     return (
-      <fieldset className={!this.props.right ? 'fieldset-left' : 'fieldset-right'}>
+      <fieldset className={!this.props.right ? classes['fieldset-left'] : classes['fieldset-right']}>
         <CurrencySelector
           right={this.props.right}
           currency={this.props.currency}

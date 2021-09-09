@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import mainLogo from '../../assets/exchange2.svg';
 import ExchangeInput from "../ExchangeInput/ExchangeInput";
-import Loader from '../../Loader'
+import Loader from '../Loader/Loader'
 import CourseTable from "../CoursesTable/CoursesTable";
-import './Exchange.css'
+import classes from './Exchange.module.css'
 import { toMoney, calcCourse } from "../../utils/utils";
 import { getCurrency } from "../../services/getCurrency";
 
@@ -67,16 +67,16 @@ export class Exchange extends Component {
 
     return (
       <div>
-        <h1 className='main-title'>Exchange</h1>
-        <div className='content-page'>
+        <h1 className={classes['main-title']}>Exchange</h1>
+        <div className={classes['content-page']}>
           <CourseTable currency={this.state.currency}/>
-          <div className='exchange-page'>
+          <div className={classes['exchange-page']}>
             <ExchangeInput
               money={exportLeftInput}
               currency={this.state.currency}
               onExchangeMoney={this.handleLeftInput}
               onCurrencyChange={this.handleLeftSelector}/>
-            <img className='exchange-img' src={mainLogo} alt="exchange.png"/>
+            <img className={classes['exchange-img']} src={mainLogo} alt="exchange.png"/>
             <ExchangeInput
               money={exportRightInput}
               currency={this.state.currency}
@@ -84,7 +84,7 @@ export class Exchange extends Component {
               onExchangeMoney={this.handleRightInput}
               onCurrencyChange={this.handleRightSelector}/>
           </div>
-          <div className='update-date-text'>Թարմացված է {courseCurrentDate}</div>
+          <div className={classes['update-date-text']}>Թարմացված է {courseCurrentDate}</div>
         </div>
       </div>
     );

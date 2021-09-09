@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './CoursesTable.css';
+import classes from './CoursesTable.module.scss';
 import { exchangeConfigs } from "../../assets/configs/exchangeConfigs";
 
 class CourseTable extends Component {
@@ -32,20 +32,20 @@ class CourseTable extends Component {
 
   render() {
     return (
-        <div className='currency-list'>
-          <div className='currency-list-names'>
+        <div className={classes['currency-list']}>
+          <div className={classes['currency-list-names']}>
             {exchangeConfigs.map(country => {
               return <div style={{display: 'flex'}} key={country.name}>
                 <div>
                   <img
-                    className='flag'
+                    className={classes['flag']}
                     width='25'
                     height='25'
                     src={country.flagUrl}
                     alt="country.flagUrl"
                   />
                 </div>
-                <div className='country-name-item'>{country.name}</div>
+                <div className={classes['country-name-item']}>{country.name}</div>
               </div>
             })}
           </div>
@@ -54,7 +54,7 @@ class CourseTable extends Component {
               .map(this.calcCourse)
               .filter(value => !!value)
               .map(value => {
-              return <div className='currency-course-list' key={value}>{value}</div>
+              return <div className={classes['currency-course-list']} key={value}>{value}</div>
             })}
           </div>
         </div>
