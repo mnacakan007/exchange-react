@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import './CoursesTable.css';
 import { exchangeConfigs } from "../../assets/configs/exchangeConfigs";
 
-class CourseTable extends React.Component {
+class CourseTable extends Component {
   calcCourse = value => {
     const course = this.props.currency['USDAMD'];
 

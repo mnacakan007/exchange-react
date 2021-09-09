@@ -1,6 +1,6 @@
 import React from 'react'
 import {Exchange} from "./components/main/Exchange";
-import './App.css';
+import './index.css';
 
 function App() {
   return (

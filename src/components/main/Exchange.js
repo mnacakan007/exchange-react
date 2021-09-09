@@ -1,26 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import mainLogo from '../../assets/exchange2.svg';
 import ExchangeInput from "../ExchangeInput/ExchangeInput";
 import Loader from '../../Loader'
 import CourseTable from "../CoursesTable/CoursesTable";
 import './Exchange.css'
-import { currency } from "../../assets/configs/exchangeConfigs";
+import { toMoney, calcCourse } from "../../utils/utils";
+import { getCurrency } from "../../services/getCurrency";
 
-
-// const URL = process.env.REACT_APP_DB_URL;
-
-function toMoney(money = 0, course) {
-  if (!money) {
-    return 0
-  }
-  return Math.round(money * course * 100) / 100
-}
-
-function calcCourse(course1, course2) {
-  return course1 / course2;
-}
-
-export class Exchange extends React.Component {
+export class Exchange extends Component {
   constructor(props) {
     super(props);
 
@@ -39,26 +26,7 @@ export class Exchange extends React.Component {
   }
 
   componentDidMount() {
-    this.getCurrency().then(() => this.setState({loading: false}));
-  }
-
-  getCurrency() {
-    // Todo Not working https requests for this API, find other API
-    // return new Promise((resolve) => setTimeout(() =>
-    //     fetch(URL)
-    //       .then(response => response.json())
-    //       .then(currency => {
-    //         this.setState({ currency: currency.quotes });
-    //         resolve();
-    //       }),
-    //   1000)
-    // );
-
-    return new Promise(resolve => setTimeout(() => {
-        this.setState({ currency });
-        resolve();
-      }, 1000)
-    );
+    getCurrency().then(currency => this.setState({ currency, loading: false }));
   }
 
   handleLeftSelector = leftQuote => {
@@ -80,9 +48,7 @@ export class Exchange extends React.Component {
   }
 
   render() {
-    const { loading } = this.state;
-
-    if (loading) {
+    if (this.state.loading) {
       return <Loader/>;
     }
 

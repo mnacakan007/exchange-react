@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { Select } from "antd";
 
-class CurrencySelector extends React.Component {
+class CurrencySelector extends Component {
   handleChange = quote => {
     this.props.onCurrencyChange(quote);
     this.setState({quote})
@@ -20,10 +20,19 @@ class CurrencySelector extends React.Component {
     return (
       <form>
         <label className='w-100'>
-          <Select className='w-100' defaultValue={this.sliceValue(currency[0])} onChange={this.handleChange}>
-            {currency.map(value => {
-              return <Select.Option key={value} value={this.sliceValue(value)}>{this.sliceValue(value)}</Select.Option>
-            })}
+          <Select
+            defaultValue={this.sliceValue(currency[0])}
+            onChange={this.handleChange}
+            className='w-100'
+          >
+            {currency.map(value =>
+              <Select.Option
+                value={this.sliceValue(value)}
+                key={value}
+              >
+                {this.sliceValue(value)}
+              </Select.Option>
+            )}
           </Select>
         </label>
       </form>

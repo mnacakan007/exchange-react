@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import CurrencySelector from "../CurrencySelector/CurrencySelector";
 import {InputNumber} from 'antd';
 import './ExchangeInput.css'
 
-class ExchangeInput extends React.Component {
+class ExchangeInput extends Component {
   handleChange = value => {
     if (value < 0) {
       return
