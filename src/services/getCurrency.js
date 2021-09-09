@@ -14,6 +14,6 @@ export function getCurrency() {
 
   return new Promise(resolve => setTimeout(() => {
       resolve(currency);
-    }, 1000)
+    }, 2000)
   );
 }

@@ -3,8 +3,13 @@
 	margin-right: 25px;
 }
 
-.country-name-item,
-.currency-course-list {
+.currency-list {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+}
+
+.country-name-item {
 	font-weight: bold;
 	color: white;
 	font-size: 18px;
@@ -12,5 +17,6 @@
 }
 
 .currency-course-list {
+	composes: country-name-item;
 	font-weight: 500;
 }

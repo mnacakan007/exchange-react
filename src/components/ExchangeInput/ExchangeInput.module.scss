@@ -6,17 +6,17 @@
 	margin: 30px 15px 0 10px;
 }
 
-.legend-item {
+:global(.legend-item) {
 	font-size: 14px;
 	color: white;
 }
 
-.ant-input-number.input-item {
+:global(.ant-input-number.input-item) {
 	width: 145px;
 	height: 40px;
 	border-radius: 4px !important;
 }
 
-.ant-input-number-input {
+:global(.ant-input-number-input) {
 	height: 38px!important;
 }
